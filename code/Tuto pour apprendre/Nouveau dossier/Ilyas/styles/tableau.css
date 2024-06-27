@@ -1,0 +1,78 @@
+
+
+label{
+    color: rgb(225, 0, 0);
+
+}
+
+form{
+
+    margin-top: 50px;
+    margin-left: 50px;
+
+}
+
+body {
+    background-image: url("https://as1.ftcdn.net/v2/jpg/01/44/80/76/1000_F_144807604_FKsr39jMEl1udBPgqoMrtGLmMDQaS5CX.jpg");
+}
+
+.boite_tout{
+
+    background: scroll;
+
+
+
+}
+
+.boite_texte{
+    height: 100px;
+    border: 2px;
+    border-color: black;
+
+
+}
+
+.boite_liste{
+    height: 100px;
+    border: 2px;
+    border-color: black;
+
+
+}
+
+.boite_droite{
+    position: fixed;
+    right: 10px;
+    bottom: 5%;
+
+
+    
+
+
+
+}
+
+.boutton{
+    
+    color: white;
+    border-radius: 50px 50px;
+    background: linear-gradient(to left ,red,blue);
+    font-size: large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-size-adjust: auto;
+    height: 50px;
+    width: 100px;
+    border: 1px;
+    border-color: blue;
+    text-align: center;
+
+
+
+}
+
+input[type='text']{
+    
+    background-color: rgb(193, 202, 174);
+
+
+}

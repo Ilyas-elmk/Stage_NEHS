@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+
+    <title>Trieur</title>
+
+    <link rel="icon" href="https://static-00.iconduck.com/assets.00/flask-icon-1594x2048-84mjydzf.png">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/tableau.css') }}">
+</head>
+
+<body>
+
+    <form action="http://localhost:5000/test/result" method="get" class="form-example">
+      <div class="boite_tout">
+          <div class="boite_texte">
+
+            <label for="text"> Choisi la façon : </label>
+            <select >
+                <option value="Bubble sort">Bubble sort</option>
+                <!-- <option value="Selection sort">Selection sort</option>
+                <option value="Insertion sort">Insertion sort</option>
+                <option value="Merge sort">Merge sort</option>                 -->
+              </select>
+
+          </div>
+
+          <div class="boite_liste">
+
+              <label for="array">Enter your array: </label>
+              <input type="text" name="list" pattern="[0-9][,\]"/>
+
+          </div>
+
+          <div class="boite_boutton">
+
+              <input class="boutton" type="submit" value="SEND!" />
+              
+
+          </div>
+
+      </div>  
+    </form>
+    <input class="un autre" type="submit" value="test" />
+</body>
+
+</html>

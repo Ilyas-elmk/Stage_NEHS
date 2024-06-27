@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "gwendolyn";
+    src: url(./asset/font/Gwendolyn-Bold.ttf);}
+
+
+*{
+    font-size: large;
+}
+
+.boite{
+    
+    filter: opacity(1);
+    transition: 1s ease;
+    width: 30%;
+
+
+}
+#boxrégle{
+    position: absolute;
+    background: white;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    margin-top: -8px;
+}
+#fermeture{
+    height: 28px;
+    width: 28px;
+    position: absolute;
+    right: 50%;
+}
+#régle{
+    text-align: center;
+    margin-left: 40%;
+    margin-top: 25%;
+
+}
+.flexbox{
+    
+    margin-left: 40%;
+}
+
+.flexbox li{
+    list-style: none;
+    height: 160px;
+    width: 50px;
+    border: 1px solid black;
+    color: black;
+    text-align: center ;
+    vertical-align: bottom;
+}
+
+.flexbox ul {
+    position: fixed;
+    bottom: 0%;
+    display: flex;
+    font-family: "gwendolyn";
+}
+
+
+.test{
+        background-color: rgb(121 117 117 / 39%);
+    
+}
+
+.playing {
+    transform: scale(.95);
+    border-color: #028ae9;
+    box-shadow: 0 0 1rem #028ae9;
+}

@@ -1,0 +1,185 @@
+const context = getContext();
+let x = 0;
+let y = 0;
+
+const stickmanParameter = {
+  armColor: "black",
+  headColor: "black",
+  legColor: "black",
+  bodyColor: "black",
+  positionX: 140,
+  positionY: 100,
+  startAngle: 0,
+  endAngle: 2 * Math.PI
+};
+
+const defaultProperty = {
+  armColor: "red",
+  headColor: "red",
+  legColor: "red",
+  bodyColor: "red",
+  positionX: 140,
+  positionY: 100,
+  startAngle: 0,
+  endAngle: 2 * Math.PI
+};
+
+function getContext() {
+  const canvas = document.getElementById("tomahawk");
+  return canvas.getContext("2d");
+}
+
+function verif(property) {
+  let headColor = (property && property.headColor)? property.headColor : defaultProperty.headColor;
+  let armColor = (property && property.armColor)? property.armColor : defaultProperty.armColor;
+  let legColor = (property && property.legColor)? property.legColor : defaultProperty.legColor;
+  let bodyColor = (property && property.bodyColor)? property.bodyColor : defaultProperty.bodyColor;
+  let positionX = (property && property.positionX)? property.positionX : defaultProperty.positionX;
+  let positionY = (property && property.positionY)? property.positionY : defaultProperty.positionY;
+  let startAngle = (property && property.startAngle)? property.startAngle : defaultProperty.startAngle;
+  let endAngle = (property && property.endAngle)? property.endAngle : defaultProperty.endAngle;
+  return { headColor, armColor, legColor, bodyColor, positionX, positionY, startAngle, endAngle };
+}
+
+class Stickman {
+  constructor(objet) {
+    this.objet = objet;
+    this.x = 0;
+    this.y = 0;
+  }
+
+  drawHead() {
+    context.beginPath();
+    context.fillStyle = this.objet.headColor;
+    context.moveTo(this.objet.positionX + this.x, 40);
+    context.arc(this.objet.positionX + 9 + this.x, 40, 14, this.objet.startAngle, this.objet.endAngle, false);
+    context.lineTo(150 + this.x, 40);
+    context.fill();
+  }
+
+  drawTronc() {
+    context.beginPath();
+    context.lineWidth = 5;
+    context.moveTo(this.objet.positionX + 10 + this.x, 50);
+    context.lineTo(this.objet.positionX + 10 + this.x, 100);
+    context.strokeStyle = this.objet.bodyColor;
+    context.stroke();
+  }
+
+  drawBrasDroit() {
+    context.beginPath();
+    context.lineWidth = 5;
+    context.moveTo(this.objet.positionX + 10 + this.x, 50);
+    context.lineTo(this.objet.positionX + 20 + this.x - (this.y / 1.5), 90 + this.y);
+    context.strokeStyle = this.objet.armColor;
+    context.stroke();
+  }
+
+  drawBrasGauche() {
+    context.beginPath();
+    context.lineWidth = 5;
+    context.moveTo(this.objet.positionX + 10 + this.x, 50);
+    context.lineTo(this.objet.positionX + this.x + (this.y / 1.5), 90 + this.y);
+    context.strokeStyle = this.objet.armColor;
+    context.stroke();
+  }
+
+  drawJambeDroite() {
+    context.beginPath();
+    context.lineWidth = 5;
+    context.moveTo(this.objet.positionX + 10 + this.x, 100);
+    context.lineTo(this.objet.positionX + 5 + this.x, 140);
+    context.strokeStyle = this.objet.legColor;
+    context.stroke();
+  }
+
+  drawJambeGauche() {
+    context.beginPath();
+    context.lineWidth = 5;
+    context.moveTo(this.objet.positionX + 10 + this.x, 100);
+    context.lineTo(this.objet.positionX + 15 + this.x, 140);
+    context.strokeStyle = this.objet.legColor;
+    context.stroke();
+  }
+
+  draw() {
+    this.drawHead();
+    this.drawTronc();
+    this.drawBrasDroit();
+    this.drawBrasGauche();
+    this.drawJambeDroite();
+    this.drawJambeGauche();
+  }
+}
+
+function deviceControl(gameControl) {
+  if (gameControl instanceof MouseEvent) {
+    const movement = {
+      moveLeft: 'q',
+      moveRight: 'd',
+      moveUp: 'z',
+      moveDown: '',
+      speedX: 5
+    }
+    return movement
+  } else if (gameControl instanceof KeyboardEvent) {
+    const movement = {
+        moveLeft: 'q',
+        moveRight: 'd',
+        moveUp: 'z',
+        moveDown: '',
+        speedX: 5
+      }
+      return movement
+    } 
+  }
+  
+  function effacer(){
+    context.clearRect(0,0,800,800)
+  }
+  
+  function bouger(event) {
+    const movement = deviceControl(event);
+    const key = event.key.toLowerCase();
+    let newX = x;
+    let newY = y;
+
+    switch (key) {
+        case movement.moveLeft:
+            newX -= movement.speedX;
+            break;
+        case movement.moveRight:
+            newX += movement.speedX;
+            break;
+        case movement.moveUp:
+            if (y < -45) {
+                stickman(stickmanParameter);
+                return;
+            }
+            newY -= 5;
+            break;
+        case movement.moveDown:
+            if (y < 0) {
+                newY += 5;
+            }
+            break;
+        default:
+            return;
+    }
+
+    effacer();
+    x = newX;
+    y = newY;
+    stickman(stickmanParameter);
+}
+
+  
+  function init(){
+    const stickman = new Stickman(stickmanParameter);
+    stickman.draw();
+  }
+  
+  window.onload = init;
+  window.addEventListener('keypress', (event) => {
+    bouger(event);
+  });

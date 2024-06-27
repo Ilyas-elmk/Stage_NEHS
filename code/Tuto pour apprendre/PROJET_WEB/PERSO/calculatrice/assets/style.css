@@ -1,0 +1,105 @@
+@font-face {
+    font-family: "Digital7";
+    src: url(./font/Digital7-rg1mL.ttf);
+  }
+  
+  * {
+    transition: linear 2s;
+  }
+  
+  #formule {
+    width: 292px;
+  }
+  
+  ul {
+    padding-inline-start: 0%;
+    margin: 0;
+  }
+  
+  form {
+    width: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  #formule {
+    height: 50px;
+    font-size: 35px;
+    font-family: 'Digital7';
+  }
+  
+  #chiffre {
+    margin-top: 5%px;
+  }
+  
+  button {
+    height: 50px;
+    margin: 8px;
+    border: 1px solid red;
+    border-radius: 50px;
+    font-size: 20px;
+    transition: 0.2s ease;
+  }
+  
+  button:hover {
+    cursor: pointer;
+    scale: 80%;
+    transition: 0.5s ease;
+    border: 0px;
+  }
+  
+  #resultat {
+    height: 40px;
+    border: 1px solid black;
+    background: rgb(223, 183, 247);
+    border: 1px solid blackl;
+  
+    padding-left: 5px;
+    font-size: 35px;
+    font-family: 'Digital7';
+  }
+  
+  #fenetre {
+    padding: 50px;
+    height: 600px;
+    width: 300px;
+    background: linear-gradient(270deg, #e8a890, #1bbbf5);
+  
+    animation: an 10s ease infinite;
+  }
+  
+  @-webkit-keyframes an {
+    0% {
+      background-position: 0% 52%;
+    }
+    50% {
+      background-position: 100% 49%;
+    }
+    100% {
+      background-position: 0% 52%;
+    }
+  }
+  
+  @-moz-keyframes an {
+    0% {
+      background-position: 0% 52%;
+    }
+    50% {
+      background-position: 100% 49%;
+    }
+    100% {
+      background-position: 0% 52%;
+    }
+  }
+  
+  @keyframes an {
+    0% {
+      background-position: 0% 52%;
+    }
+    50% {
+      background-position: 100% 49%;
+    }
+    100% {
+      background-position: 0% 52%;
+    }
+  }
